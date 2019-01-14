@@ -90,9 +90,9 @@ document.getElementById("factorization").addEventListener("submit", function (ev
 	ev.preventDefault();
 	var value = parseInt(document.getElementById("factorization_number").value);
 	if (value > 0) {
-		alert("Výsledkem faktorizace čísla " + value + " jsou čísla " + jednoducha_faktorizace(value).join(", ") + ".");
+		writeResult("Výsledkem faktorizace čísla " + value + " jsou čísla " + jednoducha_faktorizace(value).join(", ") + ".");
 	} else {
-		alert("Neplatný formát zadaného čísla. Zadali jste " + value);
+		writeResult("Neplatný formát zadaného čísla. Zadali jste " + value);
 	}
 });
 
@@ -102,7 +102,7 @@ document.getElementById("nsd").addEventListener("submit", function (ev) {
 	var b = parseInt(document.getElementById("nsd_b").value);
 
 	if (a < 0 || b < 0) {
-		alert("Jedno ze zadaných čísel je menších než nula.");
+		writeResult("Jedno ze zadaných čísel je menších než nula.");
 		return;
 	}
 
@@ -112,6 +112,8 @@ document.getElementById("nsd").addEventListener("submit", function (ev) {
 	} else {
 		result = nsd(b, a);
 	}
-	alert("Výsledkem rozsireneho euklidovat algoritmu pro cisla " + result.a + " a " + result.b +" je Bezoutova rovnost " + result.d + " rovná se " + result.alpha + " krát " + result.a + " plus " + result.beta + " krát " + result.b);
+	writeResult("Výsledkem rozsireneho euklidovat algoritmu pro cisla " + result.a + " a " + result.b +" je Bezoutova rovnost " + result.d + " rovná se " + result.alpha + " krát " + result.a + " plus " + result.beta + " krát " + result.b);
 
 });
+
+function writeResult(r) { document.getElementById("res").innerText = r; }
