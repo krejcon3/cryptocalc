@@ -119,6 +119,4 @@ document.getElementById("nsd").addEventListener("submit", function (ev) {
 function writeResult(r) {
 	var element = document.getElementById("res");
 	element.innerText = r;
-	element.select();
-	document.execCommand("copy");
 }
