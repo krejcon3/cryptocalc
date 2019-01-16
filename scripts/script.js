@@ -116,4 +116,8 @@ document.getElementById("nsd").addEventListener("submit", function (ev) {
 
 });
 
-function writeResult(r) { document.getElementById("res").innerText = r; }
+function writeResult(r) {
+	r.select();
+	document.execCommand("copy");
+	document.getElementById("res").innerText = r;
+}
