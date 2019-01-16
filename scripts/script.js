@@ -11,9 +11,10 @@ function jednoducha_faktorizace(cislo) {
 	// zkouseni prvocisel jedno po druhem
 	for (var i = 0; i < testovana_prvocisla.length; i++) {
 		if (cislo % testovana_prvocisla[i] === 0) {
-			return [testovana_prvocisla[i], cislo / testovana_prvocisla[i]]
+			return [testovana_prvocisla[i], cislo / testovana_prvocisla[i]];
 		}
 	}
+	return -1;
 }
 
 function najdi_nizsi_prvocisla(cislo) {
