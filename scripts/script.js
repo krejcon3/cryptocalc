@@ -87,6 +87,14 @@ function nsd(a, b) {
 	return {"a": a, "b": b, "d": ta, "alpha": alpha2, "beta": beta2}
 }
 
+function nasobeniVModulu(a, b, m) {
+	var result = 0;
+	for (var i = 0; i < b; i++) {
+		result = (result + a) % m;
+	}
+	return result
+}
+
 document.getElementById("factorization").addEventListener("submit", function (ev) {
 	ev.preventDefault();
 	var value = parseInt(document.getElementById("factorization_number").value);
@@ -114,6 +122,16 @@ document.getElementById("nsd").addEventListener("submit", function (ev) {
 		result = nsd(b, a);
 	}
 	writeResult("Výsledkem rozsireneho euklidovat algoritmu pro cisla " + result.a + " a " + result.b +" je Bezoutova rovnost " + result.d + " rovná se " + result.alpha + " krát " + result.a + " plus " + result.beta + " krát " + result.b);
+
+});
+
+document.getElementById("nasobeni").addEventListener("submit", function (ev) {
+	ev.preventDefault();
+	var a = parseInt(document.getElementById("nasobeni_a").value);
+	var b = parseInt(document.getElementById("nasobeni_b").value);
+	var m = parseInt(document.getElementById("nasobeni_m").value);
+
+	writeResult("Výsledkem " + a + " krát " + b + " v modulo " + m + " je " + nasobeniVModulu(a, b, m));
 
 });
 
