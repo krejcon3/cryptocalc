@@ -84,7 +84,13 @@ function nsd(a, b) {
 		ta = tb;
 		tb = zbytek;
 	}
-	return {"a": a, "b": b, "d": ta, "alpha": alpha2, "beta": beta2}
+	return {
+		"a": a,
+		"b": b,
+		"d": ta,
+		"alpha": alpha2,
+		"beta": beta2
+	}
 }
 
 function nasobeniVModulu(a, b, m) {
@@ -92,7 +98,22 @@ function nasobeniVModulu(a, b, m) {
 	for (var i = 0; i < b; i++) {
 		result = (result + a) % m;
 	}
-	return result
+	return kladneCisloVModulu(result, m)
+}
+
+function mocninaVModulu(a, b, m) {
+	var result = 1;
+	for (var i = 0; i < b; i++) {
+		result = (result * a) % m;
+	}
+	return kladneCisloVModulu(result, m)
+}
+
+function kladneCisloVModulu(n,m) {
+	while (n < 0) {
+		n += m;
+	}
+	return n;
 }
 
 document.getElementById("factorization").addEventListener("submit", function (ev) {
@@ -121,7 +142,7 @@ document.getElementById("nsd").addEventListener("submit", function (ev) {
 	} else {
 		result = nsd(b, a);
 	}
-	writeResult("Výsledkem rozsireneho euklidovat algoritmu pro cisla " + result.a + " a " + result.b +" je Bezoutova rovnost " + result.d + " rovná se " + result.alpha + " krát " + result.a + " plus " + result.beta + " krát " + result.b);
+	writeResult("Výsledkem rozsireneho euklidovat algoritmu pro cisla " + result.a + " a " + result.b +" je Bezoutova rovnost " + result.d + " = " + result.alpha + " * " + result.a + " + " + result.beta + " * " + result.b);
 
 });
 
@@ -132,7 +153,15 @@ document.getElementById("nasobeni").addEventListener("submit", function (ev) {
 	var m = parseInt(document.getElementById("nasobeni_m").value);
 
 	writeResult("Výsledkem " + a + " krát " + b + " v modulo " + m + " je " + nasobeniVModulu(a, b, m));
+});
 
+document.getElementById("mocnina").addEventListener("submit", function (ev) {
+	ev.preventDefault();
+	var a = parseInt(document.getElementById("mocnina_a").value);
+	var e = parseInt(document.getElementById("mocnina_e").value);
+	var m = parseInt(document.getElementById("mocnina_m").value);
+
+	writeResult("Výsledkem " + a + "^" + e + " mod " + m + " = " + mocninaVModulu(a, e, m));
 });
 
 function writeResult(r) {
