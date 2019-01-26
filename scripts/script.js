@@ -152,7 +152,7 @@ document.getElementById("nasobeni").addEventListener("submit", function (ev) {
 	var b = parseInt(document.getElementById("nasobeni_b").value);
 	var m = parseInt(document.getElementById("nasobeni_m").value);
 
-	writeResult("Výsledkem " + a + " krát " + b + " v modulo " + m + " je " + nasobeniVModulu(a, b, m));
+	writeResult("Výsledkem " + a + "*" + b + " mod " + m + " = " + nasobeniVModulu(a, b, m));
 });
 
 document.getElementById("mocnina").addEventListener("submit", function (ev) {
